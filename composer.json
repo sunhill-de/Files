@@ -1,0 +1,34 @@
+{
+	"name" : "sunhill/files",
+	"description" : "The sunhill file manager",
+	"type" : "library",
+	"license" : "MIT",
+	"authors" : [{
+			"name" : "Klaus Dimde",
+			"email" : "klaus@dimde.info"
+		}
+	],
+	"minimum-stability" : "dev",
+	"autoload" : {
+		"psr-4" : {
+			"Sunhill\\Files\\Tests\\" : [
+				"tests",
+				"tests/lib",
+				"tests/objects"
+			],
+			"Sunhill\\Files\\Test\\" : [
+				"tests",
+				"tests/lib",
+				"tests/objects"
+			],
+			"Sunhill\\Files\\" : "src"
+		}
+	},
+	"extra" : {
+		"laravel" : {
+			"providers" : [
+				"Sunhill\\Files\\FilesServiceProvider"
+			]
+		}
+	}
+}

@@ -1,0 +1,13 @@
+/vendor
+/.idea
+/.vscode
+/.vagrant
+.phpunit.result.cache
+/database/database.sqlite
+/tests/temp
+*~
+/storage
+/composer.lock
+/.settings
+/.buildpath
+/.env
