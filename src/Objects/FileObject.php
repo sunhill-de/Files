@@ -74,5 +74,18 @@ class FileObject extends ORMObject {
             ->set_editable(true)
             ->set_groupeditable(true);            
     }
+  
+    
+    protected static function setupInfos()
+    {
+        static::addInfo('name','FileObject');
+        static::addInfo('table','fileobjects');
+        static::addInfo('name_s','fileobjects',true);
+        static::addInfo('name_p','fileobject',true);
+        static::addInfo('description','Baseobject for fileobjects like files, dirs or links');
+        static::addInfo('options',0);
+        static::addInfo('editable',false);
+        static::addInfo('instantiable',false);
+    }
     
 }
