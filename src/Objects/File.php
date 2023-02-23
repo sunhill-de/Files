@@ -140,4 +140,17 @@ class File extends FileObject {
     {
         return $this->name.".".$this->ext;
     }
+    
+    protected static function setupInfos()
+    {
+        static::addInfo('name','File');
+        static::addInfo('table','files');
+        static::addInfo('name_s','files',true);
+        static::addInfo('name_p','file',true);
+        static::addInfo('description','Class for files');
+        static::addInfo('options',0);
+        static::addInfo('editable',true);
+        static::addInfo('instantiable',false);
+    }
+    
 }
