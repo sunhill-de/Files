@@ -1,13 +1,13 @@
 <?php
 namespace Sunhill\Files\Tests\Unit;
 
-use Sunhill\Basic\Tests\SunhillTestCase;
+use Sunhill\Basic\Tests\SunhillOrchestraTestCase;
 use Sunhill\Basic\Utils\DescriptorException;
 use Sunhill\Files\CrawlerDescriptor;
 use Sunhill\Files\Tests\CreatesApplication;
 use Sunhill\Basic\Utils\Descriptor;
 
-class DescriptorTest extends SunhillTestCase
+class DescriptorTest extends SunhillOrchestraTestCase
 {
   
       use CreatesApplication;
