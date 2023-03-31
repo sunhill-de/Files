@@ -19,6 +19,8 @@ use Sunhill\Files\Objects\Dir;
 use Sunhill\Files\Objects\Link;
 use Sunhill\Files\Objects\Mime;
 
+use Sunhill\Visual\Facades\Dialogs;
+
 class FilesServiceProvider extends ServiceProvider
 {
     public function register()
@@ -56,6 +58,9 @@ class FilesServiceProvider extends ServiceProvider
         $this->app->alias(Utils::class,'utils');
         $this->app->singleton(FileObjects::class, function () { return new FileObjects(); } );
         $this->app->alias(FileObjects::class,'fileobjects');
+        Dialogs::addObjectListFields(Mime::class,['mimegroup','item']);
+        Dialogs::addObjectKeyfield(Mime::class,':mimegroup / :item');
+        
         
         $this->registerClasses();
         $this->registerCommands();
