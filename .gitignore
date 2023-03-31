@@ -8,6 +8,7 @@
 *~
 /storage
 /composer.lock
+/composer-dev.lock
 /.settings
 /.buildpath
 /.env

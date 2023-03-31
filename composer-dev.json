@@ -9,6 +9,20 @@
 		}
 	],
 	"minimum-stability" : "dev",
+       "repositories" : [{
+                        "type" : "path",
+                        "url" : "../basic",
+                        "options" : {
+                                "symlink" : true
+                        }
+                },
+                {
+                        "type" : "path",
+                        "url" : "../orm",
+                        "options" : {
+                                "symlink" : true
+                        }
+                }],
        "require": {
                 "sunhill/basic":"*",
                 "sunhill/orm":"*"
