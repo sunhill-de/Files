@@ -24,15 +24,6 @@ use Sunhill\Files\Facades\FileManager;
  */
 class FileObject extends ORMObject {
     
-    public static $table_name = 'fileobjects';
-    public static $object_infos = [
-        'name'=>'FileObject',       // A repetition of static:$object_name @todo see above
-        'table'=>'fileobjects',     // A repitition of static:$table_name
-        'name_s'=>'file object',     // A human readable name in singular
-        'name_p'=>'file objects',    // A human readable name in plural
-        'description'=>'Baseobject for fileobjects like files, dirs or links',
-        'options'=>0,           // Reserved for later purposes
-    ];
     
     protected static function setupProperties() {
         parent::setupProperties();
@@ -82,7 +73,7 @@ class FileObject extends ORMObject {
         static::addInfo('table','fileobjects');
         static::addInfo('name_s','fileobjects',true);
         static::addInfo('name_p','fileobject',true);
-        static::addInfo('description','Baseobject for fileobjects like files, dirs or links');
+        static::addInfo('description','Baseobject for fileobjects like files, dirs or links', true);
         static::addInfo('options',0);
         static::addInfo('editable',false);
         static::addInfo('instantiable',false);

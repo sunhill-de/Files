@@ -27,17 +27,6 @@ class File extends FileObject {
 
     protected $current_location = '';
     
-    public static $table_name = 'files';
-
-    public static $object_infos = [
-        'name'=>'File',       // A repetition of static:$object_name @todo see above
-        'table'=>'files',     // A repitition of static:$table_name
-        'name_s' => 'file',
-        'name_p' => 'files',
-        'description' => 'Class for files',
-        'options'=>0,           // Reserved for later purposes
-    ];
-
     protected static function setupProperties()
     {
         parent::setupProperties();
@@ -145,9 +134,9 @@ class File extends FileObject {
     {
         static::addInfo('name','File');
         static::addInfo('table','files');
-        static::addInfo('name_s','files',true);
-        static::addInfo('name_p','file',true);
-        static::addInfo('description','Class for files');
+        static::addInfo('name_s','file',true);
+        static::addInfo('name_p','files',true);
+        static::addInfo('description','Class for files', true);
         static::addInfo('options',0);
         static::addInfo('editable',true);
         static::addInfo('instantiable',false);

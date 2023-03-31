@@ -21,17 +21,6 @@ namespace Sunhill\Files\Objects;
  */
 class Link extends FileObject
 {
-    public static $table_name = 'links';
-    
-    public static $object_infos = [
-        'name'=>'Link',       // A repetition of static:$object_name @todo see above
-        'table'=>'links',     // A repitition of static:$table_name
-        'name_s' => 'link',
-        'name_p' => 'links',
-        'description' => 'Class for links',
-        'options'=>0,           // Reserved for later purposes
-    ];
-        
     public function calculate_full_path() {
         return $this->parent_dir->full_path.$this->name.'.'.$this->ext;
     }
@@ -53,5 +42,18 @@ class Link extends FileObject
             ->set_editable(true)
             ->set_groupeditable(true);
     }
+ 
+    protected static function setupInfos()
+    {
+        static::addInfo('name','Link');
+        static::addInfo('table','links');
+        static::addInfo('name_s','link',true);
+        static::addInfo('name_p','links',true);
+        static::addInfo('description','A class for links', true);
+        static::addInfo('options',0);
+        static::addInfo('editable',false);
+        static::addInfo('instantiable',false);
+    }
+    
     
 }

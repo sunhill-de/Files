@@ -23,16 +23,6 @@ use Sunhill\Files\Facades\FileManager;
  */
 class Dir extends FileObject
 {
-    public static $table_name = 'dirs';
-    
-    public static $object_infos = [
-        'name'=>'Dir',       // A repetition of static:$object_name @todo see above
-        'table'=>'dirs',     // A repitition of static:$table_name
-        'name_s' => 'directory',
-        'name_p' => 'directories',
-        'description' => 'Class for directories',
-        'options'=>0,           // Reserved for later purposes
-    ];
     
     protected static function setupProperties()
     {
@@ -58,6 +48,18 @@ class Dir extends FileObject
         } else {
             return $this->name.'/';
         }
+    }
+
+    protected static function setupInfos()
+    {
+        static::addInfo('name','Dir');
+        static::addInfo('table','dirs');
+        static::addInfo('name_s','dir',true);
+        static::addInfo('name_p','dirs',true);
+        static::addInfo('description','A class for directories', true);
+        static::addInfo('options',0);
+        static::addInfo('editable',false);
+        static::addInfo('instantiable',false);
     }
     
 }

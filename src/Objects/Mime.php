@@ -24,15 +24,6 @@ use Sunhill\Files\Facades\FileManager;
  */
 class Mime extends ORMObject {
     
-    public static $table_name = 'mimes';
-    public static $object_infos = [
-        'name'=>'Mime',       // A repetition of static:$object_name @todo see above
-        'table'=>'mimes',     // A repitition of static:$table_name
-        'name_s'=>'MIME Type',     // A human readable name in singular
-        'name_p'=>'MIME Types',    // A human readable name in plural
-        'description'=>'Storage for MIME types',
-        'options'=>0,           // Reserved for later purposes
-    ];
     
     protected static function setupProperties() {
         parent::setupProperties();
@@ -43,7 +34,7 @@ class Mime extends ORMObject {
             ->set_groupeditable(false);
         self::varchar('item')
             ->setDefault(1)
-            ->set_description('Was this fileobject created?')
+            ->set_description('The item of the MIME type')
             ->set_displayable(true)
             ->set_editable(false)
             ->set_groupeditable(false);            
@@ -66,5 +57,17 @@ class Mime extends ORMObject {
     public function calculate_mime() {
         return $this->mimegroup."/".$this->item;
     }
-        
+  
+    protected static function setupInfos()
+    {
+        static::addInfo('name','Mime');
+        static::addInfo('table','mimes');
+        static::addInfo('name_s','mime',true);
+        static::addInfo('name_p','mimes',true);
+        static::addInfo('description','A class for mime types', true);
+        static::addInfo('options',0);
+        static::addInfo('editable',true);
+        static::addInfo('instantiable',true);
+    }
+    
 }
