@@ -4,9 +4,9 @@ namespace Sunhill\Files\Tests;
 
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
-use Tests\TestCase;
+use Sunhill\Basic\Tests\SunhillOrchestraTestCase;
 
-class CrawlerTestCase extends TestCase
+class CrawlerTestCase extends SunhillOrchestraTestCase
 {
     
 }
