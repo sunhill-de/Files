@@ -14,8 +14,7 @@ use Sunhill\Files\Tests\Scenarios\ComplexScanScenario;
 
 class HandlerFileObjectTest extends SunhillScenarioTestCase
 {
- 
-    use CreatesApplication;
+    
     
     protected function GetScenarioClass()
     {

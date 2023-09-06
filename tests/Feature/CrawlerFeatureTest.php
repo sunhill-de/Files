@@ -15,8 +15,6 @@ use Sunhill\Files\Processors\Scanner;
 class CrawlerFeatureTest extends SunhillScenarioTestCase
 {
     
-    use CreatesApplication;
-    
     protected function GetScenarioClass()
     {
         return SimpleScanScenario::class;

@@ -9,4 +9,12 @@ use Sunhill\Basic\Tests\SunhillOrchestraTestCase;
 class CrawlerTestCase extends SunhillOrchestraTestCase
 {
     
+    protected function getPackageProviders($app)
+    {
+        return [
+            SunhillBasicServiceProvider::class,
+            SunhillServiceProvider::class,
+        ];
+    }
+    
 }

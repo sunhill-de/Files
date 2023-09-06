@@ -17,9 +17,7 @@ use Sunhill\Files\Processors\Scanner;
 class DBRebuildFeatureTest extends SunhillScenarioTestCase
 {
     
-    use CreatesApplication;
-    
-    protected function GetScenarioClass()
+     protected function GetScenarioClass()
     {
         return ComplexScanScenario::class;
     }

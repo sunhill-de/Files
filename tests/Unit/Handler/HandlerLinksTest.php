@@ -17,8 +17,6 @@ use Sunhill\ORM\Facades\Objects;
 class HandlerLinksTest extends SunhillScenarioTestCase
 {
     
-    use CreatesApplication;
-    
     protected function GetScenarioClass()
     {
         return ComplexScanScenario::class;

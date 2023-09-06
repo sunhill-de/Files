@@ -11,8 +11,6 @@ use Illuminate\Support\Facades\Config;
 class FileManagerTest extends SunhillScenarioTestCase
 {
     
-    use CreatesApplication;
-    
     protected function GetScenarioClass()
     {
         return FilesystemScenario::class;

@@ -15,7 +15,6 @@ use Sunhill\Files\Objects\File;
 class HandlerMoveDestinationTest extends SunhillScenarioTestCase
 {
     
-    use CreatesApplication;
     
     public function testCopyFile()
     {

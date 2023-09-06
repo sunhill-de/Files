@@ -13,8 +13,6 @@ use Sunhill\Files\Objects\Dir;
 class FileObjectsTest extends SunhillScenarioTestCase
 {
     
-    use CreatesApplication;
-    
     protected function GetScenarioClass()
     {
         return FilesystemScenario::class;

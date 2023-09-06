@@ -12,9 +12,7 @@ use Sunhill\Files\Tests\Scenarios\FilesystemScenario;
 
 class HandlerDirsTest extends SunhillScenarioTestCase
 {
- 
-    use CreatesApplication;
-    
+     
     public function testDirs()
     {
         $descriptor = new CrawlerDescriptor();

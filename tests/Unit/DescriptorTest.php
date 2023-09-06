@@ -9,9 +9,7 @@ use Sunhill\Basic\Utils\Descriptor;
 
 class DescriptorTest extends SunhillOrchestraTestCase
 {
-  
-      use CreatesApplication;
-      
+        
       /**
        * @dataProvider HelperProvider
        */
