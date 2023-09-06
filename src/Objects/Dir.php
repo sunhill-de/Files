@@ -4,7 +4,7 @@
  * @file dir.php
  * Provides the dir object 
  * Lang en
- * Reviewstatus: 2020-09-11
+ * Reviewstatus: 2023-09-06
  * Localization: unknown
  * Documentation: unknown
  * Tests: unknown
@@ -14,6 +14,7 @@
 namespace Sunhill\Files\Objects;
 
 use Sunhill\Files\Facades\FileManager;
+use Sunhill\ORM\Objects\PropertyList;
 
 /**
  * The class for dirs
@@ -24,16 +25,15 @@ use Sunhill\Files\Facades\FileManager;
 class Dir extends FileObject
 {
     
-    protected static function setupProperties()
+    protected static function setupProperties(PropertyList $list)
     {
-        parent::setupProperties();
-        self::integer('max_files')
+        $list->integer('max_files')
             ->setDefault(0)
             ->set_description('How many files per directory are allowed (0=no limit)')
             ->set_displayable(true)
             ->set_editable(true)
             ->set_groupeditable(false);
-        self::integer('max_levels')
+        $list->integer('max_levels')
             ->setDefault(0)
             ->set_description('How deep can we built a directory tree under this directory (0=no limit)')
             ->set_displayable(true)

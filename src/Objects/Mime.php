@@ -15,6 +15,7 @@ namespace Sunhill\Files\Objects;
 
 use Sunhill\ORM\Objects\ORMObject;
 use Sunhill\Files\Facades\FileManager;
+use Sunhill\ORM\Objects\PropertyList;
 
 /**
  * Abstract base class for all other fileobjects (files, dirs and links)
@@ -25,32 +26,32 @@ use Sunhill\Files\Facades\FileManager;
 class Mime extends ORMObject {
     
     
-    protected static function setupProperties() {
-        parent::setupProperties();
-        self::varchar('mimegroup')
+    protected static function setupProperties(PropertyList $list)
+    {
+        $list->varchar('mimegroup')
             ->set_description('The group of the MIME type')
             ->set_displayable(true)
             ->set_editable(false)
             ->set_groupeditable(false);
-        self::varchar('item')
+        $list->varchar('item')
             ->setDefault(1)
             ->set_description('The item of the MIME type')
             ->set_displayable(true)
             ->set_editable(false)
             ->set_groupeditable(false);            
-        self::calculated('mime')
+        $list->calculated('mime')
             ->searchable()
             ->set_decription('Complete mime string')
             ->set_displayable(true)
             ->set_editable(false)
             ->set_groupeditable(false)->searchable();            
-        self::varchar('default_ext')
+        $list->varchar('default_ext')
             ->searchable()
             ->set_decription('The default extension')
             ->set_displayable(true)
             ->set_editable(true)
             ->set_groupeditable(false);
-        self::object('alias_for')
+        $list->object('alias_for')
             ->setAllowedObjects(['mime']);
     }
 

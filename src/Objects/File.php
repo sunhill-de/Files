@@ -14,6 +14,8 @@
 namespace Sunhill\Files\Objects;
 
 use Sunhill\Files\Facades\FileManager;
+use Sunhill\ORM\Objects\PropertyList;
+use Sunhill\ORM\Properties\PropertyVarchar;
 
 /**
  * The class for files. This class provides informations about a spcecific file. The file itself is not able
@@ -27,49 +29,48 @@ class File extends FileObject {
 
     protected $current_location = '';
     
-    protected static function setupProperties()
+    protected static function setupProperties(PropertyList $list)
     {
-        parent::setupProperties();
-        self::object('reference')
+        $list->object('reference')
             ->setAllowedObjects('File')
             ->setDefault(null)
             ->set_description('Referenced file')
             ->set_displayable(true)
             ->set_editable(true)
             ->set_groupeditable(false);
-        self::varchar('sha1_hash')
+        $list->varchar('sha1_hash')
             ->setMaxLen(40)
             ->searchable()
             ->set_description('SHA1-Hash of the whole file.')
             ->set_displayable(true)
             ->set_editable(false)
             ->set_groupeditable(false);
-        self::varchar('md5_hash')
+        $list->varchar('md5_hash')
             ->setMaxLen(32)
             ->searchable()
             ->set_description('The md5 hash of the whole file')
             ->set_displayable(true)
             ->set_editable(false)
             ->set_groupeditable(false);
-        self::varchar('ext')
+        $list->varchar('ext')
             ->set_description('The extension of this file')
             ->set_displayable(true)
             ->set_editable(true)
             ->set_groupeditable(true);
-        self::object('mime')
+        $list->object('mime')
             ->setAllowedObjects('Mime')
             ->set_description('The mime type of this file')
             ->set_displayable(true)
             ->set_editable(false)
             ->set_groupeditable(false);
-        self::varchar('checkout_state')
+        $list->varchar('checkout_state')
             ->setDefault('')
             ->searchable()
             ->set_description('Whats the checkout state of this file')
             ->set_displayable(true)
             ->set_editable(false)
             ->set_groupeditable(false);            
-        self::enum('type')
+        $list->enum('type')
             ->setEnumValues([
                 'regular',              // Normal file
                 'converted_to',         // This file war permanently converted to another file (this file isn't existing anymore but is not deleted)
@@ -81,27 +82,29 @@ class File extends FileObject {
             ->set_displayable(true)
             ->set_editable(false)
             ->set_groupeditable(false);
-        self::datetime('created')
+        $list->datetime('created')
             ->set_description('Timestamp of the creation of this file.')
             ->set_displayable(true)
             ->set_editable(false)
             ->set_groupeditable(false);
-        self::datetime('changed')
+        $list->datetime('changed')
             ->set_description('Timestamp of the last change of this file.')
             ->set_displayable(true)
             ->set_editable(false)
             ->set_groupeditable(false);
-        self::integer('size')
+        $list->integer('size')
             ->set_description('Size of the file (in bytes)')
             ->set_displayable(true)
             ->set_editable(false)
             ->set_groupeditable(false);
-        self::arrayOfObjects('sources')
+        $list->array('sources')
+            ->setElementType(PropertyVarchar::class)
             ->set_description('The source dir(s) this file was read from.')
             ->set_displayable(true)
             ->set_editable(true)
             ->set_groupeditable(false);
-        self::arrayOfObjects('content')
+        $list->array('content')
+            ->setElementType(PropertyObject::class)
             ->setAllowedObjects(['Person','Location','Date'])
             ->setDefault('none')
             ->set_description('Linked contents')

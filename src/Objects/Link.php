@@ -13,6 +13,8 @@
  */
 namespace Sunhill\Files\Objects;
 
+use Sunhill\ORM\Objects\PropertyList;
+
 /**
  * The class for links
  *
@@ -25,10 +27,9 @@ class Link extends FileObject
         return $this->parent_dir->full_path.$this->name.'.'.$this->ext;
     }
     
-    protected static function setupProperties()
+    protected static function setupProperties(PropertyList $list)
     {
-        parent::setupProperties();
-        self::object('target')
+        $list->object('target')
             ->setAllowedObjects('File')
             ->setDefault(null)
             ->searchable()
@@ -36,7 +37,7 @@ class Link extends FileObject
             ->set_displayable(true)
             ->set_editable(true)
             ->set_groupeditable(false);
-        self::varchar('ext')
+        $list->varchar('ext')
             ->set_description('The extension for this link')
             ->set_displayable(true)
             ->set_editable(true)

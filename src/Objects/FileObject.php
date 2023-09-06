@@ -15,6 +15,8 @@ namespace Sunhill\Files\Objects;
 
 use Sunhill\ORM\Objects\ORMObject;
 use Sunhill\Files\Facades\FileManager;
+use Sunhill\ORM\Objects\PropertyList;
+use Sunhill\ORM\Properties\PropertyObject;
 
 /**
  * Abstract base class for all other fileobjects (files, dirs and links)
@@ -25,40 +27,41 @@ use Sunhill\Files\Facades\FileManager;
 class FileObject extends ORMObject {
     
     
-    protected static function setupProperties() {
-        parent::setupProperties();
-        self::integer('fileobject_exists')
+    protected static function setupProperties(PropertyList $list)
+    {
+        $list->integer('fileobject_exists')
             ->setDefault(1)
             ->set_description('Does this file object (still) exists?')
             ->set_displayable(true)
             ->set_editable(false)
             ->set_groupeditable(false);
-        self::integer('fileobject_created')
+        $list->integer('fileobject_created')
             ->setDefault(1)
             ->set_description('Was this fileobject created?')
             ->set_displayable(true)
             ->set_editable(false)
             ->set_groupeditable(false);            
-        self::calculated('full_path')
+        $list->calculated('full_path')
             ->searchable()
             ->set_decription('Complete path of the fileobject')
             ->set_displayable(true)
             ->set_editable(false)
             ->set_groupeditable(false);            
-        self::varchar('name')
+        $list->varchar('name')
             ->searchable()
             ->set_decription('The name of the fileobject (file name or dir name)')
             ->set_displayable(true)
             ->set_editable(true)
             ->set_groupeditable(false);
-        self::object('parent_dir')
+        $list->object('parent_dir')
             ->setAllowedObjects('Dir')
             ->searchable()
             ->set_decription('Parentdir')
             ->set_displayable(true)
             ->set_editable(true)
             ->set_groupeditable(false);
-        self::arrayOfObjects('associations')
+        $list->array('associations')
+            ->setElementType(PropertyObject::class)
             ->searchable()
             ->set_decription('Association to this fileobject')
             ->set_displayable(true)
