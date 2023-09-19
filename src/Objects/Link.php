@@ -30,7 +30,7 @@ class Link extends FileObject
     protected static function setupProperties(PropertyList $list)
     {
         $list->object('target')
-            ->setAllowedObjects('File')
+            ->setAllowedClass('File')
             ->setDefault(null)
             ->searchable()
             ->set_description('What file does this link point to')

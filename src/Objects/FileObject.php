@@ -54,7 +54,7 @@ class FileObject extends ORMObject {
             ->set_editable(true)
             ->set_groupeditable(false);
         $list->object('parent_dir')
-            ->setAllowedObjects('Dir')
+            ->setAllowedClass('Dir')
             ->searchable()
             ->set_decription('Parentdir')
             ->set_displayable(true)
@@ -62,6 +62,7 @@ class FileObject extends ORMObject {
             ->set_groupeditable(false);
         $list->array('associations')
             ->setElementType(PropertyObject::class)
+            ->setAllowedClasses('Objects')
             ->searchable()
             ->set_decription('Association to this fileobject')
             ->set_displayable(true)

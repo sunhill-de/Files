@@ -32,7 +32,7 @@ class File extends FileObject {
     protected static function setupProperties(PropertyList $list)
     {
         $list->object('reference')
-            ->setAllowedObjects('File')
+            ->setAllowedClass('File')
             ->setDefault(null)
             ->set_description('Referenced file')
             ->set_displayable(true)
@@ -58,7 +58,7 @@ class File extends FileObject {
             ->set_editable(true)
             ->set_groupeditable(true);
         $list->object('mime')
-            ->setAllowedObjects('Mime')
+            ->setAllowedClasses('Mime')
             ->set_description('The mime type of this file')
             ->set_displayable(true)
             ->set_editable(false)
@@ -103,14 +103,14 @@ class File extends FileObject {
             ->set_displayable(true)
             ->set_editable(true)
             ->set_groupeditable(false);
-        $list->array('content')
+  /*      $list->array('content')
             ->setElementType(PropertyObject::class)
-            ->setAllowedObjects(['Person','Location','Date'])
+            ->setAllowedClasses(['Person','Location','Date'])
             ->setDefault('none')
             ->set_description('Linked contents')
             ->set_displayable(true)
             ->set_editable(true)
-            ->set_groupeditable(false);
+            ->set_groupeditable(false); */
     }
     
     function calculate_full_path()

@@ -52,7 +52,7 @@ class Mime extends ORMObject {
             ->set_editable(true)
             ->set_groupeditable(false);
         $list->object('alias_for')
-            ->setAllowedObjects(['mime']);
+            ->setAllowedClass('mime');
     }
 
     public function calculate_mime() {
